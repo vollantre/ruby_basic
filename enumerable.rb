@@ -6,10 +6,14 @@ module Enumerable
     end
 
     def my_each_with_index
-        for i in self
-            index = self.index(i)
-            yield(i, index)
+        i = 0
+        arr = []
+        loop do
+            arr << yield(self[i], i)
+            i += 1            
+            break if i > self.length-1
         end
+        arr
     end
 
     def my_select
